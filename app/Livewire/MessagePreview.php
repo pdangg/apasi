@@ -11,11 +11,17 @@ class MessagePreview extends Component
 
     public $image;
     public $message = '';
+    public $showButton = false;
+    public $buttonText = '';
+    public $buttonUrl = '';
     public $customError = '';
 
     protected $rules = [
         'image' => 'nullable|image|mimes:jpg,jpeg,png,heic|max:1024', // Validasi file yang diizinkan dan ukuran maksimal 1MB
         'message' => 'string|max:1000',
+        'showButton' => 'required|boolean',
+        'buttonText' => 'string|max:255',
+        'buttonUrl' => 'string|max:255|url', // Validasi bahwa URL harus valid
     ];
 
     public function updated($propertyName)
